@@ -18,8 +18,8 @@ jobs:
           java-version: '17'
 
       - name: Build APK
-        run: gradle assembleDebug
-
+        run: ./gradlew assembleDebug
+        
       - uses: actions/upload-artifact@v4
         with:
           name: PASSATION-PRO-APK
