@@ -1,16 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://android.com"
+<ScrollView xmlns:android="http://android.com"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#FFFFFF">
+    android:background="#F5F7FA">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="مرحباً بك! التطبيق يعمل بنجاح 🎉"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نظام تسليم المهام التقنية (PASSATION)"
+            android:textColor="#1E293B"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- قسم توقيت العمل -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏰ توقيت الوردية:"
+            android:textStyle="bold"
+            android:textColor="#475569"/>
+        <EditText
+            android:id="@+id/etTimeIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="وقت الدخول (مثال: 08:00)"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/etTimeOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="وقت الخروج (مثال: 16:00)"
+            android:inputType="text"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- قسم حالة العمل والمفاتيح -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📝 تقرير الخدمة (واش خلا خدمة):"
+            android:textStyle="bold"
+            android:textColor="#475569"/>
+        <EditText
+            android:id="@+id/etJobStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="اكتب حالة العمل والمهمات المتبقية..."
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔑 مفاتيح السيرفيس وكروت الغرف:"
+            android:textStyle="bold"
+            android:textColor="#475569"/>
+        <EditText
+            android:id="@+id/etKeysStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="واش خلا مفاتيح سيرفيس / كروت جهاز فتح البيبان..."
+            android:inputType="text"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- قسم السيكوريتي والمفاتيح الخارجية -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🛡️ مفاتيح من عند السيكوريتي (الأمن):"
+            android:textStyle="bold"
+            android:textColor="#475569"/>
+        <EditText
+            android:id="@+id/etSecurityKeys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="بتاع واش المفاتيح؟ ولأجل ماذا؟"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/etSecurityTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="قيساش خرجهم؟ (الوقت بالظبط)"
+            android:inputType="text"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="حفظ وإرسال التقرير"
+            android:backgroundTint="#0EA5E9"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+    </LinearLayout>
+</ScrollView>
