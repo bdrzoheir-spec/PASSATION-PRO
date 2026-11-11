@@ -21,11 +21,11 @@ android {
         }
     }
 
-    // هنا نخبره بالمسار الصحيح الذي رأيناه في صورتك
     sourceSets {
         main {
             manifest.srcFile 'app/src/main/AndroidManifest.xml'
             java.srcDirs = ['app/src/main/java']
+            res.srcDirs = ['app/src/main/res']
         }
     }
 }
