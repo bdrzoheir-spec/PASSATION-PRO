@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.passationpro' // ضع هنا اسم الحزمة (Package name) الخاص بتطبيقك
+    namespace 'com.example.passationpro'
     compileSdk 34
 
     defaultConfig {
@@ -13,11 +13,19 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // هنا نخبره بالمسار الصحيح الذي رأيناه في صورتك
     sourceSets {
         main {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src']
+            manifest.srcFile 'app/src/main/AndroidManifest.xml'
+            java.srcDirs = ['app/src/main/java']
         }
     }
 }
