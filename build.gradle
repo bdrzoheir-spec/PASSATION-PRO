@@ -1,3 +1,14 @@
 plugins {
     id 'com.android.application' version '8.6.1' apply false
 }
+
+// إضافة هذا الجزء لإخبار أندرويد بمكان ملفاتك الحالي
+android {
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['.']
+            res.srcDirs = ['app/src/main/res'] // تأكد من وجود مجلد res هناك إذا كان لديك واجهات
+        }
+    }
+}
