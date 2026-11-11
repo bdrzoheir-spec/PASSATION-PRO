@@ -1,3 +1,23 @@
 plugins {
-    id 'com.android.application' version '8.6.1' apply false
+    id 'com.android.application' version '8.6.1'
+}
+
+android {
+    namespace 'com.example.passationpro' // ضع هنا اسم الحزمة (Package name) الخاص بتطبيقك
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.passationpro"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+    
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['.']
+        }
+    }
 }
