@@ -1,4 +1,3 @@
-
 name: Build PASSATION PRO APK
 
 on:
@@ -16,13 +15,16 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-       
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build APK
         run: gradle assembleDebug
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: PASSATION-PRO-APK
-          path: build/outputs/apk/debug/PASSTION-PRO-debug.apk
+          path: "**/build/outputs/apk/debug/*.apk"
+          if-no-files-found: error
