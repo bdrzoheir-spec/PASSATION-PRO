@@ -1,0 +1,16 @@
+package com.passationpro;
+import android.app.*; import android.os.*; import android.graphics.Color; import android.view.*; import android.widget.*; import android.text.*; import java.text.*; import java.util.*;
+public class MainActivity extends Activity {
+ LinearLayout root, list; EditText tech, partner, work, keyName, person, reason, room; TextView status;
+ String stamp(){return new SimpleDateFormat("dd/MM/yyyy HH:mm",Locale.getDefault()).format(new Date());}
+ public void onCreate(Bundle b){super.onCreate(b); home();}
+ TextView title(String s,int size){TextView t=new TextView(this);t.setText(s);t.setTextSize(size);t.setTextColor(Color.rgb(18,42,74));t.setPadding(0,16,0,12);return t;}
+ EditText field(String hint){EditText e=new EditText(this);e.setHint(hint);e.setSingleLine(false);return e;}
+ Button btn(String s,Runnable r){Button b=new Button(this);b.setText(s);b.setOnClickListener(v->r.run());return b;}
+ void setup(String heading){root=new LinearLayout(this);root.setOrientation(1);root.setPadding(28,20,28,30);root.setBackgroundColor(Color.rgb(245,248,252));ScrollView sc=new ScrollView(this);sc.addView(root);setContentView(sc);root.addView(title("PASSATION PRO",26));root.addView(title(heading,20));}
+ void home(){setup("فريق الصيانة • Technical Team");root.addView(title("تسجيل المناوبة والأشغال والمفاتيح",16));root.addView(btn("📝 Passation – تسليم المناوبة",()->passation()));root.addView(btn("🔑 خروج / رجوع المفاتيح",()->keys()));root.addView(btn("📋 سجل العمليات",()->history()));root.addView(title("سجل سريع",18));root.addView(title("احفظ كل عملية مع التاريخ والساعة تلقائياً.",14));}
+ void passation(){setup("Passation de service");tech=field("اسم التقني الذي أنهى المناوبة");partner=field("اسم التقني المستلم");work=field("الأشغال المنجزة / المتبقية / ملاحظات");root.addView(tech);root.addView(partner);root.addView(work);root.addView(btn("حفظ Passation",()->{save("PASSATION","من: "+tech.getText()+" | إلى: "+partner.getText()+" | "+work.getText());home();}));root.addView(btn("رجوع",()->home()));}
+ void keys(){setup("Gestion des clés / Security");keyName=field("اسم المفتاح أو Service Card");person=field("اسم الشخص الذي أخذ المفتاح");reason=field("سبب الخروج / المهمة");room=field("رقم الغرفة أو المكان");root.addView(keyName);root.addView(person);root.addView(reason);root.addView(room);root.addView(btn("تسجيل خروج المفتاح",()->{save("KEY OUT","المفتاح: "+keyName.getText()+" | الشخص: "+person.getText()+" | السبب: "+reason.getText()+" | المكان: "+room.getText());home();}));root.addView(btn("تسجيل رجوع المفتاح",()->{save("KEY RETURN","رجوع المفتاح: "+keyName.getText()+" | استلمه: "+person.getText());home();}));root.addView(btn("رجوع",()->home()));}
+ void save(String type,String detail){String old=getPreferences(0).getString("log","");getPreferences(0).edit().putString("log",stamp()+" — "+type+" — "+detail+"\n"+old).apply();new AlertDialog.Builder(this).setMessage("تم تسجيل العملية: "+stamp()).setPositiveButton("موافق",null).show();}
+ void history(){setup("Historique");TextView t=title(getPreferences(0).getString("log","لا توجد عمليات مسجلة بعد"),15);root.addView(t);root.addView(btn("رجوع",()->home()));}
+}
